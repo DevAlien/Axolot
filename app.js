@@ -33,13 +33,13 @@ orm.initialize(config.orm, function (err, models) {
     app.models = models.collections;
     app.databases = models.connections;
 
-    app.config = config.app;
+    app.config = config;
 
     // Configure passport
     require('./config/passport')(passport);
 
     // Configure express
-    require('./config/express')(app, app.config, passport, function () {
+    require('./config/express')(app, config.app, passport, function () {
 
         // Load routes
         app.routes = {};
