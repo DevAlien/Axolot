@@ -52,7 +52,7 @@ orm.initialize(config.orm, function (err, models) {
         global.Service = {};
         _(services).each(function (service, key) {
             app.services[key] = service;
-            service.app = app.config;
+            service.app = config;
             global.Service[key] = service;
         });
 

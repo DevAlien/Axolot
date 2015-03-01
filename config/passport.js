@@ -1,5 +1,5 @@
 var BearerStrategy   = require('passport-http-bearer').Strategy;
-console.log('jdijd')
+
 // expose this function to our app using module.exports
 module.exports = function(passport) {
 
