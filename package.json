@@ -1,7 +1,6 @@
 {
   "name": "axolot",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
   "author": {
     "name": "Goncalo Margalho",
     "email": "g@margalho.info"
@@ -22,6 +21,10 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/devalien/axolot.git"
   },
   "dependencies": {
     "bcrypt": "^0.8.0",
@@ -47,16 +50,5 @@
     "serve-favicon": "~2.0.1",
     "socket.io": "^1.2.0",
     "waterline": "^0.10.13"
-  },
-  "devDependencies": {
-    "chai": "^1.10.0",
-    "gulp": "~3.8.8",
-    "gulp-livereload": "~2.1.1",
-    "gulp-nodemon": "~1.0.4",
-    "mocha": "^2.1.0",
-    "should": "^5.0.0",
-    "sinon": "^1.12.2",
-    "sinon-chai": "^2.6.0",
-    "supertest": "^0.15.0"
   }
 }
