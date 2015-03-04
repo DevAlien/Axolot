@@ -33,6 +33,7 @@ orm.initialize(config.orm, function (err, models) {
     app.models = models.collections;
     app.databases = models.connections;
 
+    global.Model = app.models;
     app.config = config;
 
     // Configure passport
