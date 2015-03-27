@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+program.on('--help', function(){
+  console.log('  Examples:');
+  console.log('');
+  console.log('    $ custom-help --help');
+  console.log('    $ custom-help -h');
+  console.log('');
+});
+// program.parse(process.argv);
+require('./commands/new')
+require('./commands/console')
+program
+    .usage('dae [options] <file ...>')
+  .version('0.0.1')
+  .command('getstream [url]', 'get stream URL')
+  
+ 
+
+  if (!process.argv.slice(2).length) {
+    program.outputHelp();
+  }
+
+program.parse(process.argv)

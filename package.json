@@ -19,8 +19,8 @@
     "socket.io"
   ],
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
+  "bin": {
+    "axolot": "./bin/axolot"
   },
   "repository": {
     "type": "git",
@@ -29,16 +29,19 @@
   "dependencies": {
     "bcrypt": "^0.8.0",
     "body-parser": "~1.4.3",
+    "commander": "^2.7.1",
     "compression": "~1.0.8",
     "cookie-parser": "~1.3.2",
     "crypto": "0.0.3",
     "express": "~4.2.0",
     "express-load": "^1.1.14",
     "express-session": "^1.9.1",
+    "extfs": "0.0.7",
     "glob": "^4.0.6",
     "jsonwebtoken": "^1.2.0",
     "lodash": "^2.4.1",
     "method-override": "~2.1.1",
+    "mkdirp": "^0.5.0",
     "mongoose": "~3.8.12",
     "morgan": "~1.1.1",
     "passport": "^0.2.1",

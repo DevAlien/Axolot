@@ -5,7 +5,8 @@ var _ = require('lodash'),
     config = require('./config/config'),
     path = require('path'),
     waterline = require('waterline'),
-    baseModel = require('./lib/model');
+    baseModel = require('./lib/model'),
+    token = require('./lib/token');
 
 // Instantiate a new instance of the ORM
 var orm = new waterline();
@@ -49,8 +50,8 @@ orm.initialize(config.orm, function (err, models) {
         });
 
         // Load services
-        app.services = {};
-        global.Service = {};
+        app.services = {token: token};
+        global.Service = {token: token};
         _(services).each(function (service, key) {
             app.services[key] = service;
             service.config = config;

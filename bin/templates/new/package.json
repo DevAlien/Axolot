@@ -1,0 +1,13 @@
+{
+  "name": "{{ name }}",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "axolot": "*",
+    "jsonwebtoken": "^3.2.2",
+    "passport": "^0.2.1",
+    "sails-mongo": "^0.10.5"
+  }
+}
