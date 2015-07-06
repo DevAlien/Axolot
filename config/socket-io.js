@@ -9,8 +9,7 @@ module.exports = function(server) {
             if (err) { return next(err); }
             if (!decoded) { return next(new Error('not authorized')); }
 
-            socket.user = {id: decoded.id};
-
+            socket.user = decoded;
             next();
         });
     });
