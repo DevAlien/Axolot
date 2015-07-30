@@ -23,7 +23,7 @@ var models = requireAll(rootPath + '/models'),
     routes = requireAll(rootPath + '/routes');
 
 // Load models into waterline
-_(models).each(function (model) {
+_.each(models, function (model) {
     orm.loadCollection(waterline.Collection.extend(new baseModel(model)));
 });
 
@@ -44,7 +44,7 @@ orm.initialize(config.orm, function (err, models) {
 
         // Load routes
         app.routes = {};
-        _(routes).each(function (route, key) {
+        _.each(routes, function (route, key) {
             app.routes[key] = route(app);
         });
 
@@ -52,7 +52,8 @@ orm.initialize(config.orm, function (err, models) {
         var services = requireAll(rootPath + '/services');
         app.services = {token: token};
         global.Service = {token: token};
-        _(services).each(function (service, key) {
+        _.each(services, function (service, key) {
+            console.log('dede')
             app.services[key] = service;
             service.config = config;
             global.Service[key] = service;
@@ -70,7 +71,7 @@ orm.initialize(config.orm, function (err, models) {
         var controllerBuilder = require('./lib/controllerBuilder');
         var controllerBuilders = {};
 
-        _(controllers).each(function (controller, key) {
+        _.each(controllers, function (controller, key) {
             controller.identity = key;
 
             var builder = new controllerBuilder(app, controller);
@@ -84,7 +85,7 @@ orm.initialize(config.orm, function (err, models) {
             // add a user to a room with it's same ID
             socket.join(socket.user.id);
             // Bind each controller's socket handlers for this connection
-            _(controllerBuilders).each(function (builder) {
+            _.each(controllerBuilders, function (builder) {
                 builder.buildSockets(socket);
             });
         });
