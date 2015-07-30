@@ -62,7 +62,7 @@ orm.initialize(config.orm, function (err, models) {
         Service.token.initialize({secret: config.secrets.token});
 
         // Configure and load listen socket
-        app.sockets = require('./config/socket-io')(server);
+        app.sockets = require('./config/socket-io')(server, config['redisio']);
 
         // Load controllers
         app.controllers = {};
