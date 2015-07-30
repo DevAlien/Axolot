@@ -7,7 +7,7 @@ var _ = require('lodash'),
     waterline = require('waterline'),
     baseModel = require('./lib/model'),
     token = require('./lib/token');
-
+console.log('aaa')
 // Instantiate a new instance of the ORM
 var orm = new waterline();
 
@@ -20,8 +20,7 @@ global.checkScopes = require('./lib/helper.js').checkScopes;
 // Require all models, controllers
 var models = requireAll(rootPath + '/models'),
     controllers = requireAll(rootPath + '/controllers'),
-    routes = requireAll(rootPath + '/routes'),
-    services = requireAll(rootPath + '/services');
+    routes = requireAll(rootPath + '/routes');
 
 // Load models into waterline
 _(models).each(function (model) {
@@ -50,6 +49,7 @@ orm.initialize(config.orm, function (err, models) {
         });
 
         // Load services
+        var services = requireAll(rootPath + '/services');
         app.services = {token: token};
         global.Service = {token: token};
         _(services).each(function (service, key) {

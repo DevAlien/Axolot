@@ -6,10 +6,19 @@ var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
 var session = require('express-session');
-
+var fs = require('fs');
 
 module.exports = function (app, config, passport, mountMiddlewareCb) {
-
+    var stats;
+    try {
+        stats = fs.lstatSync(config.root + '/config/express.js');
+    }
+    catch (e) {
+        console.error(e)
+    }
+    if (stats) {
+        require(config.root + '/config/express.js')(app, config);
+    }
     // app.use(favicon(config.root + '/public/img/favicon.ico'));
     app.use(logger('dev'));
     app.use(bodyParser.json());
@@ -17,17 +26,18 @@ module.exports = function (app, config, passport, mountMiddlewareCb) {
         extended: true
     }));
 
-    // app.use(session({secret: 'superubermegasecret', saveUninitialized: true, resave: true}));
     app.use(passport.initialize());
-    // app.use(passport.session());
     app.passport = passport;
     app.use(cookieParser());
     app.use(compress());
     app.use(express.static(config.root + '/public'));
     app.use(methodOverride());
-
+    
     // Mount our middleware (controllers, routes) before the status code handlers
     mountMiddlewareCb();
+
+
+    
 
     // Status code handlers
     app.use(function (req, res, next) {

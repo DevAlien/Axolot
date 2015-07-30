@@ -17,7 +17,6 @@ program
                     return load()
                 return setTimeout(checkState, 100)
             }
-
             checkState();
     });
 
