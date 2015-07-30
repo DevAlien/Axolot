@@ -7,7 +7,7 @@ var _ = require('lodash'),
     waterline = require('waterline'),
     baseModel = require('./lib/model'),
     token = require('./lib/token');
-console.log('aaa')
+
 // Instantiate a new instance of the ORM
 var orm = new waterline();
 
@@ -53,7 +53,6 @@ orm.initialize(config.orm, function (err, models) {
         app.services = {token: token};
         global.Service = {token: token};
         _.each(services, function (service, key) {
-            console.log('dede')
             app.services[key] = service;
             service.config = config;
             global.Service[key] = service;
