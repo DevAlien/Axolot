@@ -1,3 +1,3 @@
 # Axolot
 
-## API-driven framework for building realtime apps.
+http://devalien.github.io/Axolot/ for documentation
