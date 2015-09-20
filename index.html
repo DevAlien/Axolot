@@ -1,34 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Axolot by DevAlien</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Axolot by DevAlien</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>Axolot</h1>
-        <h2>API-driven realtime framework</h2>
-        <a href="https://github.com/DevAlien/Axolot" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
+        <p>API-driven realtime framework</p>
+        <p class="view"><a href="https://github.com/DevAlien/Axolot">View the Project on GitHub <small>DevAlien/Axolot</small></a></p>
+        <ul>
+          <li><a href="https://github.com/DevAlien/Axolot/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/DevAlien/Axolot/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/DevAlien/Axolot">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
 <a id="axolot-another-nodejs-framework" class="anchor" href="#axolot-another-nodejs-framework" aria-hidden="true"><span class="octicon octicon-link"></span></a>Axolot (Another node.js framework?)</h3>
 
 <p>I needed something similar to sails.js but that I could update, for example, socket.io and it was much simpler, without having everything out of the box. So I basically took out everything I liked about it and made a smaller version with some different features.</p>
@@ -36,7 +35,8 @@
 <h3>
 <a id="get-started" class="anchor" href="#get-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Started</h3>
 
-<p>Axolot comes bundled with a command line tool which can be used to easily create a new project </p>
+<p><a href="http://devalien.io/axolot-first-project/">Basic Tutorial</a>
+Axolot comes bundled with a command line tool which can be used to easily create a new project </p>
 
 <pre><code>$ npm install axolot -g
 $ axolot new demoproject
@@ -61,7 +61,7 @@ Basically you can add a model inside the folder <code>api/models</code>.</p>
 
 <p>Example <code>api/models/user.js</code></p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="pl-c1">module</span>.exports <span class="pl-k">=</span> {
+<div class="highlight highlight-source-js"><pre>    <span class="pl-c1">module</span>.exports <span class="pl-k">=</span> {
 
         identity<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span>
         attributes<span class="pl-k">:</span> {
@@ -89,7 +89,7 @@ Basically you can add a model inside the folder <code>api/models</code>.</p>
 
 <p>Example <code>api/controllers/user.js</code></p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="pl-c1">module</span>.exports <span class="pl-k">=</span> {
+<div class="highlight highlight-source-js"><pre>    <span class="pl-c1">module</span>.exports <span class="pl-k">=</span> {
         model<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span>, <span class="pl-c">// We are attaching the user to the model, so CRUD operations are there (good for dev purposes)</span>
         path<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/user<span class="pl-pds">'</span></span>, <span class="pl-c">// Tthis is the end point</span>
 
@@ -123,7 +123,7 @@ Basically you can add a model inside the folder <code>api/models</code>.</p>
 
 <p>Example <code>api/services/mailer.js</code> which will be callable from <code>Service.mailer.send</code></p>
 
-<div class="highlight highlight-javascript"><pre>    <span class="pl-k">var</span> nodemailer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>nodemailer<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre>    <span class="pl-k">var</span> nodemailer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>nodemailer<span class="pl-pds">'</span></span>);
 
     <span class="pl-c1">module</span>.exports <span class="pl-k">=</span> {
 
@@ -197,26 +197,14 @@ Basically you can add a model inside the folder <code>api/models</code>.</p>
 <p>You can drop me an email at <a href="mailto:g@margalho.info">g@margalho.info</a> or ask a question in StackOverflow or simply open an issue on GitHub.com</p>
 
 <p>More updats will come soon.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/DevAlien/Axolot/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/DevAlien/Axolot/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/DevAlien/Axolot"></a> is maintained by <a href="https://github.com/DevAlien">DevAlien</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
-
-            <script type="text/javascript">
+    <footer>
+      <p>Project maintained by <a href="https://github.com/DevAlien">DevAlien</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
