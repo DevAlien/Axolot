@@ -14,7 +14,7 @@ module.exports = function (app, config, passport, mountMiddlewareCb) {
         stats = fs.lstatSync(config.root + '/config/express.js');
     }
     catch (e) {
-        console.error(e)
+        
     }
     if (stats) {
         require(config.root + '/config/express.js')(app, config);
