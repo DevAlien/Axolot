@@ -1,7 +1,7 @@
 // Development environment
 
 // Application configuration
-var rootPath = require('path').normalize(__dirname + '/../..');
+var rootPath = require('path').normalize(__dirname + '/..');
 
 exports.app = {
     root: rootPath,
