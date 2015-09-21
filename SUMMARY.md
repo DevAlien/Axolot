@@ -7,5 +7,5 @@
    * [Examples](docs/introduction/examples.md)
 * [Basics](docs/basics/basics.md)
    * [Structure](docs/basics/structure.md)
-   * CLI
+   * [CLI](docs/basics/cli.md)
 
