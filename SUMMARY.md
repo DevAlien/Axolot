@@ -6,4 +6,5 @@
    * [Dependencies](docs/introduction/dependenciesmd.md)
    * [Examples](docs/introduction/examples.md)
 * Basics
+   * Structure
 
