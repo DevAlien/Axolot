@@ -5,6 +5,6 @@
    * [Motivation](docs/introduction/motivation.md)
    * [Dependencies](docs/introduction/dependenciesmd.md)
    * [Examples](docs/introduction/examples.md)
-* [Basics](src/basics/basics.md)
+* [Basics](docs/basics/basics.md)
    * [Structure](docs/basics/structure.md)
 
