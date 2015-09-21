@@ -7,7 +7,7 @@
    * [Examples](docs/introduction/examples.md)
 * [Install](docs/install.md)
 * [CLI](docs/cli.md)
-* [Structure](docs/structure.md)
+* [Structure](docs/getstarted.md)
 * [Config](docs/config/config.md)
    * [Environment Config](docs/config/env.md)
    * [Expresst Config](docs/config/express.md)
@@ -18,3 +18,4 @@
 * [Models](docs/models/models.md)
    * [Config](docs/controllers/config.md)
    * [Querying](docs/controllers/querying.md)
+
