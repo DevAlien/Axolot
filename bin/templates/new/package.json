@@ -1,0 +1,17 @@
+{
+  "name": "{{ name }}",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "axolot": "*",
+    "jsonwebtoken": "^5.0.5",
+    "passport": "^0.2.1",
+    "sails-mongo": "^0.10.5"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-nodemon": "*"
+  }
+}

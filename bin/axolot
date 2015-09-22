@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .usage('[command]')
+  .version('0.0.1')
+
+program.on('--help', function(){
+  console.log('  Examples:');
+  console.log('');
+  console.log('    $ axolot new myproj');
+  console.log('    $ axolot console development');
+  console.log('');
+});
+// program.parse(process.argv);
+require('./commands/new')
+require('./commands/console')
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+}
+
+program.parse(process.argv)
