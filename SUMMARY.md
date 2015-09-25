@@ -9,7 +9,7 @@
 * [Get Started](docs/getstarted.md)
 * [Config](docs/config/config.md)
    * [Environment Config](docs/config/env.md)
-   * [Expresst Config](docs/config/express.md)
+   * [Express Config](docs/config/express.md)
 * [Controllers](docs/controllers/controllers.md)
    * [Simple](docs/controllers/simple.md)
    * [Advanced](docs/controllers/advanced.md)
