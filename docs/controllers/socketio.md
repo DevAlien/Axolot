@@ -39,3 +39,13 @@ module.exports = {
     }
 };
 ```
+
+`this.sockets.user.id` is the user id which is connect to the socket. Check the chapter about Auth for more infos.
+
+So with the above code we have define a socket route `own` inside the controller `users`. From the socket.io client this is callable with something like this
+
+```
+socket.on('users:own', function (data) {
+    console.log(data);
+});
+```
