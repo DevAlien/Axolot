@@ -1,5 +1,5 @@
 #Get Started
-If you have installed axolot ( `npm install -g axolot` ) and have followed the [CLI](docs/cli.md) instructions you should have all the know how to start.
+If you have installed axolot ( `npm install -g axolot` ) and have followed the [CLI](./cli.md) instructions you should have all the know how to start.
 
 We have to create a new project and we are going to use the CLI.
 
