@@ -17,4 +17,3 @@
 * [Models](docs/models/models.md)
    * [Config](docs/controllers/config.md)
    * [Querying](docs/controllers/querying.md)
-
