@@ -21,8 +21,9 @@ module.exports = function (app, config, passport, mountMiddlewareCb) {
     }
     // app.use(favicon(config.root + '/public/img/favicon.ico'));
     app.use(logger('dev'));
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({limit: config.bodyLimit || '1mb'}));
     app.use(bodyParser.urlencoded({
+        limit: config.bodyLimit || '1mb',
         extended: true
     }));
 
