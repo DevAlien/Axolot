@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.2" data-basepath="../.." data-revision="Tue Sep 22 2015 23:23:48 GMT+0200 (CEST)">
+    <div class="book" data-level="6.2" data-basepath="../.." data-revision="Fri Sep 25 2015 10:36:33 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -301,15 +301,7 @@
     
         <li class="chapter " data-level="7" data-path="docs/models/models.html">
             
-                
-                    <a href="../../docs/models/models.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.</b>
-                        
-                        Models
-                    </a>
+            <span><b>7.</b> Models</span>
             
             
             <ul class="articles">
@@ -317,30 +309,14 @@
     
         <li class="chapter " data-level="7.1" data-path="docs/controllers/config.html">
             
-                
-                    <a href="../../docs/controllers/config.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.1.</b>
-                        
-                        Config
-                    </a>
+            <span><b>7.1.</b> Config</span>
             
             
         </li>
     
         <li class="chapter " data-level="7.2" data-path="docs/controllers/querying.html">
             
-                
-                    <a href="../../docs/controllers/querying.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.2.</b>
-                        
-                        Querying
-                    </a>
+            <span><b>7.2.</b> Querying</span>
             
             
         </li>
@@ -456,7 +432,87 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="advanced">Advanced</h1>
+                        <h1 id="controler-advanced">Controler - Advanced</h1>
+<p>By now you should know already what a controller is and how to use it. Here we are going to use some special features.</p>
+<h2 id="multiple-functions-in-one-route">Multiple functions in one route</h2>
+<p>As you may have seen in the <code>Controllers - Simple</code> section, there&apos;s an array defining the route, this is because we can add multiple functions to a single route. It can be useful for authentication, or for an action that it get&apos;s repeated in many places. You can create a function which looks like <code>function(req, res, next)</code> and in the first function that you call you have to remember to call the callback <code>next</code> like <code>next()</code>. This is needed so express knows that it has to go to the next function.</p>
+<p>As an example we can suppose that to use <code>/users</code> of the API you need an header <code>Authorization</code> with <code>testAxolot</code> as data.</p>
+<p>Our function to check if it has the header with that value will look like the following</p>
+<pre><code>function(req, res, next) {
+    if(req.get(&apos;Authorization&apos;) === &apos;testAxolot&apos;) {
+        next(); //If it has the header with testAxolot it can go to the next function
+    } else {
+        res.send(401, &apos;Unauthorized&apos;); // If does not have it return 401 Unauthorized
+    }
+}
+</code></pre><p>Now we can implement it in our code.</p>
+<pre><code>&apos;use strict&apos;;
+var users = [{name: &apos;John&apos;}, {name: &apos;Jimmy&apos;}]; //Our users datasource
+var auth = function(req, res, next) {
+    if(req.get(&apos;Authorization&apos;) === &apos;testAxolot&apos;) {
+        next(); //If it has the header with testAxolot it can go to the next function
+    } else {
+        res.send(401, &apos;Unauthorized&apos;); // If does not have it return 401 Unauthorized
+    }
+};
+
+module.exports = {
+    path: &apos;/users&apos;, //Defines the base route
+
+    actions: {
+        &apos;get /&apos;: [ //This will return all the users we have
+            auth,
+            function (req, res) {
+                res.send(users);
+            }
+        ],
+        &apos;get /:id&apos;: [ //Here we get a single user by id
+            auth,
+            function (req, res) {
+                res.send(users[req.params.id]);
+            }
+        ],
+        &apos;post /&apos;: [ //To create a user
+            auth,
+            function (req, res) {
+                users.push(req.body);
+                res.send(req.body);
+            }
+        ],
+        &apos;put /:id&apos;: [ //To edit a user
+            auth,
+            function (req, res) {
+                users[req.params.id] = req.body; //req.params you can access the id which is defined in the route, it can be any character as the id
+                res.send(req.body);
+            }
+        ],
+        &apos;delete /:id&apos;: [ //To delete a certain user
+            auth,
+            function (req, res) {
+                users.splice(req.params.id, 1);//Removes that id from the array
+                res.send(users);
+            }
+        ]
+    }
+};
+</code></pre><p>Now every route will execute 2 functions, the <code>auth</code> function and the normal function like before. Obviously the second function it is called just when the auth is ok.</p>
+<h2 id="attaching-a-model">Attaching a model</h2>
+<p>A model can be accessed with the global variable <code>Model</code> or can be called set in the controller.</p>
+<blockquote>
+<p>To call a model using the global variable you just have to do <code>Model.users.find()...</code> and you can try this out in the console running the axolot command <code>axolot console</code>.</p>
+</blockquote>
+<p>But now we want to use the built in functionality of the controller. We will attach a model <code>users</code> to the controller users. (we will use a reduced version of the controller used until now).</p>
+<pre><code>&apos;use strict&apos;;
+
+
+module.exports = {
+    path: &apos;/users&apos;, //Defines the base route
+    model: &apos;users&apos;, //This will load our model into the controller
+    actions: {
+    }
+};
+</code></pre><p>Defining the model gives us some good free functionality. We will have the CRUD operations for free. Just try to <code>POST /users</code> <code>GET /users</code> <code>GET /users/1</code> etc. This is very good for development.</p>
+<p>Passing the model to the controller it will give you access to it directly by using <code>this.model</code>. You can access this from your routes.</p>
 
                     
                     </section>

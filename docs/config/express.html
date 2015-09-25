@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="5.2" data-basepath="../.." data-revision="Tue Sep 22 2015 23:23:48 GMT+0200 (CEST)">
+    <div class="book" data-level="5.2" data-basepath="../.." data-revision="Fri Sep 25 2015 10:36:33 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -301,15 +301,7 @@
     
         <li class="chapter " data-level="7" data-path="docs/models/models.html">
             
-                
-                    <a href="../../docs/models/models.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.</b>
-                        
-                        Models
-                    </a>
+            <span><b>7.</b> Models</span>
             
             
             <ul class="articles">
@@ -317,30 +309,14 @@
     
         <li class="chapter " data-level="7.1" data-path="docs/controllers/config.html">
             
-                
-                    <a href="../../docs/controllers/config.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.1.</b>
-                        
-                        Config
-                    </a>
+            <span><b>7.1.</b> Config</span>
             
             
         </li>
     
         <li class="chapter " data-level="7.2" data-path="docs/controllers/querying.html">
             
-                
-                    <a href="../../docs/controllers/querying.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.2.</b>
-                        
-                        Querying
-                    </a>
+            <span><b>7.2.</b> Querying</span>
             
             
         </li>
@@ -456,7 +432,32 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="expresst-config">Expresst Config</h1>
+                        <h1 id="express-config">Express config</h1>
+<p>Axolot, like many other, is based on express. Express is widely used and very supported. Axolot does not want to hide express, but wants to give you the chance to use it and use the power that comes with it.</p>
+<p>Express has <a href="http://expressjs.com/guide/using-middleware.html" target="_blank">middlewares</a>, you can set <a href="http://expressjs.com/guide/using-template-engines.html" target="_blank">template engines</a> (which there&apos;s an example on how to add one) and many other things.</p>
+<h1 id="how-to-use-the-config">How to use the config</h1>
+<p>This is very simple in the <code>./config</code> directory there&apos;s a file <code>express.js</code> which, if it exists, it is called before the app/API starts.</p>
+<p>The file looks like this</p>
+<pre><code>module.exports = function (app, config) {
+
+};
+</code></pre><p><code>app</code> is the variable which reffers to express</p>
+<p><code>config</code> is the config.app which is defined in the environment config</p>
+<h1 id="small-example-on-how-to-use-it">Small example on how to use it.</h1>
+<p>For example we want to enable the cross origin, because we are building an API which is used by a browser which makes AJAX calls.</p>
+<pre><code>module.exports = function (app, config) {
+    var allowCrossDomain = function(req, res, next) {
+        var allowHeaders = [&apos;Accept&apos;, &apos;Accept-Version&apos;, &apos;Content-Type&apos;, &apos;Api-Version&apos;, &apos;Origin&apos;, &apos;X-Requested-With&apos;, &apos;Authorization&apos;, &apos;content-type&apos;, &apos;headers&apos;, &apos;method&apos;];
+        res.header(&apos;Access-Control-Allow-Origin&apos;, &apos;*&apos;);
+        res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;GET,PUT,POST,DELETE,OPTIONS&apos;);
+        res.header(&apos;Access-Control-Allow-Headers&apos;, allowHeaders.join(&apos;, &apos;));
+
+        next();
+    }
+
+    app.use(allowCrossDomain);
+};
+</code></pre><p>Of course this is just an example, here you can fit everything express has to offer.</p>
 
                     
                     </section>

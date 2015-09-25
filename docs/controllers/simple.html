@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="6.1" data-basepath="../.." data-revision="Tue Sep 22 2015 23:23:48 GMT+0200 (CEST)">
+    <div class="book" data-level="6.1" data-basepath="../.." data-revision="Fri Sep 25 2015 10:36:33 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -301,15 +301,7 @@
     
         <li class="chapter " data-level="7" data-path="docs/models/models.html">
             
-                
-                    <a href="../../docs/models/models.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.</b>
-                        
-                        Models
-                    </a>
+            <span><b>7.</b> Models</span>
             
             
             <ul class="articles">
@@ -317,30 +309,14 @@
     
         <li class="chapter " data-level="7.1" data-path="docs/controllers/config.html">
             
-                
-                    <a href="../../docs/controllers/config.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.1.</b>
-                        
-                        Config
-                    </a>
+            <span><b>7.1.</b> Config</span>
             
             
         </li>
     
         <li class="chapter " data-level="7.2" data-path="docs/controllers/querying.html">
             
-                
-                    <a href="../../docs/controllers/querying.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.2.</b>
-                        
-                        Querying
-                    </a>
+            <span><b>7.2.</b> Querying</span>
             
             
         </li>
@@ -456,7 +432,76 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="simple">Simple</h1>
+                        <h1 id="controller-simple">Controller - Simple</h1>
+<p>A controller is basically the entry point (and exit point) of your code for a request, this means that when a request (HTTP) comes in it will go in the defined route and then just a this point you can interact with it. </p>
+<p>As said above, a controller defines a set or routes, for example <code>GET /users</code> in REST style you will know that calling that will return you a list of users.</p>
+<p>The Controllers in axolot have different features so I decided to separate a little bit the documentation, here we will see just the easy step.</p>
+<h2 id="hot-to-create-a-route-and-a-controller">Hot to create a route and a controller</h2>
+<p>First of all we have to create a controller file. All controllers are loaded automatically by the framework and they should be located at <code>./api/controllers</code>. </p>
+<p>At this point we will create our first controller called <code>users</code> so let&apos;s create the file <code>./api/controllers/users.js</code> which will look like this.</p>
+<pre><code>&apos;use strict&apos;;
+
+module.exports = {
+    path: &apos;/users&apos;, //Defines the base route
+
+    actions: {
+        &apos;get /&apos;: [ //This is our definition of the route
+            function (req, res) {
+                var users = [{name: &apos;John&apos;}, {name: &apos;Jimmy&apos;}];
+                res.send(users);
+            }
+        ]
+    }
+};
+</code></pre><p>With the above controller we have defined a route in our API which looks like <code>/users</code>. If you are in your local environment you just start the API, point to <a href="http://localhost:3000/users" target="_blank">http://localhost:3000/users</a> (Change the port if you do not use the default one) and you should get <code>[{name: &apos;John&apos;}, {name: &apos;Jimmy&apos;}]</code>.</p>
+<p>As you see in the example above we put <code>get</code> before the <code>/</code> this mean that just GET (HTTP) requests are accepted in this route. We can define others, like <code>PUT</code> <code>POST</code> <code>DELETE</code> <code>PATCH</code> etc.</p>
+<h2 id="a-more-complex-controller-to-show-different-actions">A more complex controller to show different actions</h2>
+<p>I will make a working API without the database, so I will use a variable to store the users outside the controller.</p>
+<pre><code>&apos;use strict&apos;;
+var users = [{name: &apos;John&apos;}, {name: &apos;Jimmy&apos;}]; //Our users datasource
+
+module.exports = {
+    path: &apos;/users&apos;, //Defines the base route
+
+    actions: {
+        &apos;get /&apos;: [ //This will return all the users we have
+            function (req, res) {
+                res.send(users);
+            }
+        ],
+        &apos;get /:id&apos;: [ //Here we get a single user by id
+            function (req, res) {
+                res.send(users[req.params.id]);
+            }
+        ],
+        &apos;post /&apos;: [ //To create a user
+            function (req, res) {
+                users.push(req.body);
+                res.send(req.body);
+            }
+        ],
+        &apos;put /:id&apos;: [ //To edit a user
+            function (req, res) {
+                users[req.params.id] = req.body; //req.params you can access the id which is defined in the route, it can be any character as the id
+                res.send(req.body);
+            }
+        ],
+        &apos;delete /:id&apos;: [ //To delete a certain user
+            function (req, res) {
+                users.splice(req.params.id, 1);//Removes that id from the array
+                res.send(users);
+            }
+        ]
+    }
+};
+</code></pre><p>All the above routes are callable like this</p>
+<ul>
+<li><code>GET /users</code> This will return every single user which is saved</li>
+<li><code>GET /users/1</code> This will return the user at the position 1 of the datasource, which is <code>{name: &apos;Jimmy&apos;}</code></li>
+<li><code>POST /users</code> This will create a new user</li>
+<li><code>PUT /users/1</code> This will modify our user at position 1</li>
+<li><code>DELETE /users/1</code> This will delete our poor Jimmy :(</li>
+</ul>
 
                     
                     </section>
