@@ -63,7 +63,7 @@ orm.initialize(config.orm, function (err, models) {
 
         // Configure and load listen socket
         app.sockets = require('./config/socket-io')(server, config['redisio']);
-
+        SocketIO = app.sockets;
         // Load controllers
         app.controllers = {};
 
