@@ -1,6 +1,6 @@
 {
   "name": "axolot",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Goncalo Margalho",
     "email": "g@margalho.info"
@@ -50,7 +50,7 @@
     "sails-disk": "^0.10.4",
     "sails-mongo": "*",
     "serve-favicon": "~2.0.1",
-    "socket.io": "^1.3.5",
+    "socket.io": "^1.3.7",
     "waterline": "^0.10.13"
   }
 }

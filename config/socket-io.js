@@ -3,8 +3,8 @@ module.exports = function(server, config) {
     if (config && config.pwd && config.host && config.port) {
         var redis = require('redis').createClient;
         var adapter = require('socket.io-redis');
-        var pub = redis(config.port, config.host, { detect_buffers: true, return_buffers: true, auth_pass: config.pwd });
-        var sub = redis(config.port, config.host, { detect_buffers: true, return_buffers: true, auth_pass: config.pwd });
+        var pub = redis(config.port, config.host, { return_buffers: true, auth_pass: config.pwd });
+        var sub = redis(config.port, config.host, { return_buffers: true, auth_pass: config.pwd });
         io.adapter(adapter({ pubClient: pub, subClient: sub }));
     } else if (config && config.host && config.port) {
         var redis = require('socket.io-redis');
