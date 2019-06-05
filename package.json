@@ -1,6 +1,6 @@
 {
   "name": "axolot",
-  "version": "0.2.2",
+  "version": "0.3.2",
   "author": {
     "name": "Goncalo Margalho",
     "email": "g@margalho.info"
@@ -47,10 +47,7 @@
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
     "require-all": "3.0.0",
-    "sails-disk": "^1.0.1",
-    "sails-mongo": "*",
     "serve-favicon": "~2.5.0",
-    "socket.io": "^2.1.1",
-    "waterline": "^0.13.5"
+    "socket.io": "^2.1.1"
   }
 }
