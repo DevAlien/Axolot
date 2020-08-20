@@ -27,7 +27,7 @@
     "url": "git://github.com/devalien/axolot.git"
   },
   "dependencies": {
-    "bcrypt": "^3.0.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "~1.18.3",
     "commander": "^2.18.0",
     "compression": "~1.7.3",
